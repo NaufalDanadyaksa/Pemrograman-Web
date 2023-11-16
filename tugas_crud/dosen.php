@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark ">
         <div class="container-fluid">
-            <a class="navbar-brand text-white" href="index.php">Sistem Informasi Mahasiswa</a>
+            <a class="navbar-brand text-white" href="admin-page.php">Sistem Informasi Mahasiswa</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,40 +26,31 @@
 
     <!-- Sign Up -->
     <div class="signup-form">
-        <form action="sign-up.php" method="post">
-            <h2>Sign Up</h2>
+        <form action="simpan-dosen.php" method="post">
+            <h2>Tambah Dosen</h2>
             <hr>
             <div class="form-group">
                 <label>Nama</label>
                 <input type="text" class="form-control" name="nama" required="required">
             </div>
             <div class="form-group">
-                <label>NIM</label>
-                <input type="text" class="form-control" name="nim" required="required">
+                <label>NIP</label>
+                <input type="text" class="form-control" name="nip" required="required">
             </div>
+
             <div class="form-group">
-                <label>Kelamin</label> <br>
-                <input type="radio" name="jenis_kelamin" value="L"> Laki laki
-                <input type="radio" name="jenis_kelamin" value="P"> Perempuan
-            </div>
-            <div class="form-group">
-                <Label>Jurusan</Label>
-                <select class="form-select" aria-label="Default select example" name="jurusan" required>
-                    <option value="Teknik Informatika">Teknik Informatika</option>
-                    <option value="Teknik Mesin">Teknik Mesin</option>
-                    <option value="Kedokteran">Kedokteran</option>
+                <Label>MATAKULIAH</Label>
+                <select class="form-select" aria-label="Default select example" name="matkul" required>
+                    <option value="1">Pemrograman Web</option>
+                    <option value="2">Algoritma</option>
+                    <option value="3">Database</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="password" required="required">
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg">ADD</button>
             </div>
 
         </form>
-        <div class="text-center">Already have an account? <a href="index.php">Login here</a></div>
     </div>
     <h1></h1>
 </body>

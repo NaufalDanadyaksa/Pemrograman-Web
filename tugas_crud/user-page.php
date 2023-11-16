@@ -25,15 +25,15 @@
     <!-- Table -->
 
     <div style="margin-top: 2px; width: 90%; margin-left: 4px;">
-        <h1>Selamat Datang</h1>
+        <h1>Data Mahasiswa</h1>
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Nim</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Kelamin</th>
-                    <th scope="col">Jurusan</th>
+                    <th scope="col">NIN</th>
+                    <th scope="col">NAMA</th>
+                    <th scope="col">KELAMIN</th>
+                    <th scope="col">JURUSAN</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,6 +58,38 @@
         </table>
     </div>
 
+    <div style="margin-top: 2px; width: 90%; margin-left: 4px;">
+        <h1>Data Dosen</h1>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">NIP</th>
+                    <th scope="col">NAMA</th>
+                    <th scope="col">MATA KULIAH</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include 'koneksi.php';
+                $dosen = mysqli_query($koneksi, "SELECT dosen.nama, dosen.nip, matkul.nama_matkul FROM `dosen` INNER JOIN matkul ON dosen.matkul = matkul.id_matkul ");
+                $no = 1;
+                foreach ($dosen as $row) {
+                    // $jenis_kelamin = $row['jenis_kelamin'] == 'P' ? 'Perempuan' : 'Laki laki';
+                    echo "<tr>
+        <td>$no</td>
+        <td>" . $row['nip'] . "</td>
+        <td>" . $row['nama'] . "</td>
+        <td>" . $row['nama_matkul'], "</td>
+        
+        </tr>";
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 

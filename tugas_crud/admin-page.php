@@ -13,7 +13,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark ">
         <div class="container-fluid">
-            <a class="navbar-brand text-white" href="index.php">Sistem Informasi Mahasiswa</a>
+            <a class="navbar-brand text-white" href="admin-page.php">Sistem Informasi Mahasiswa</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,16 +25,16 @@
     <!-- Table -->
 
     <div style="margin-top: 2px; width: 90%; margin-left: 4px;">
-        <h1>Selamat Datang</h1>
+        <h1>Data Mahasiswa</h1>
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nim</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Kelamin</th>
-                    <th scope="col">Jurusan</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">NO</th>
+                    <th scope="col">NIM</th>
+                    <th scope="col">NAMA</th>
+                    <th scope="col">KELAMIN</th>
+                    <th scope="col">JURUSAN</th>
+                    <th scope="col">ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,13 +51,47 @@
         <td>" . $jenis_kelamin, "</td>
         <td>" . $row['jurusan'], "</td>
         <td><a href='edit-form.php?id_mhs=$row[id_mhs]' class='btn btn-warning'>edit</a>
-        <a href='delete.php?id_mhs=$row[id_mhs]' class='btn btn-danger'>delet</a>
+        <a href='delete.php?id_mhs=$row[id_mhs]' class='btn btn-danger'>delete</a>
         </tr>";
                     $no++;
                 }
                 ?>
             </tbody>
         </table>
+    </div>
+    <div style="margin-top: 2px; width: 90%; margin-left: 4px;">
+        <h1>Data Dosen</h1>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">NO</th>
+                    <th scope="col">NIP</th>
+                    <th scope="col">NAMA</th>
+                    <th scope="col">MATA KULIAH</th>
+                    <th scope="col">ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                include 'koneksi.php';
+                $dosen = mysqli_query($koneksi, "SELECT dosen.id_dosen,dosen.nama, dosen.nip, matkul.nama_matkul FROM `dosen` INNER JOIN matkul ON dosen.matkul = matkul.id_matkul ");
+                $no = 1;
+                foreach ($dosen as $row) {
+                    // $jenis_kelamin = $row['jenis_kelamin'] == 'P' ? 'Perempuan' : 'Laki laki';
+                    echo "<tr>
+        <td>$no</td>
+        <td>" . $row['nip'] . "</td>
+        <td>" . $row['nama'] . "</td>
+        <td>" . $row['nama_matkul'], "</td>
+        <td><a href='edit-form-dosen.php?id_dosen=$row[id_dosen]' class='btn btn-warning'>edit</a>
+        <a href='delete-dosen.php?id_dosen=$row[id_dosen]' class='btn btn-danger'>delete</a>
+        </tr>";
+                    $no++;
+                }
+                ?>
+            </tbody>
+        </table>
+        <a href="dosen.php" class="btn btn-success">Add Dosen</a>
     </div>
 
 
